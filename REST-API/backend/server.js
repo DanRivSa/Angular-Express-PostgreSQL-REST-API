@@ -9,7 +9,7 @@ app.set('name','backend_api');
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors({origin:'localhost:4200'}));
+app.use(cors({origin:'http://localhost:4200'}));
 
 //routes
 app.use(require('./routers/routes.js'));

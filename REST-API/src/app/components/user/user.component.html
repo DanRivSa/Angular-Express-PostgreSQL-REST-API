@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="jumbotron">
+                <h3 class="h3 text-center">User registration form</h3>
+                <hr>
+                <form #user_form="ngForm" (ngSubmit) = "SendOperation(user_form)">
+                    <div class="form-group">
+                      <input type="hidden" name='id' #user_id = "ngModel" [(ngModel)] = "userService.user.id">
+                      <label for="Name">Name</label>
+                      <input type="text" class="form-control" placeholder="Insert name" name="name" #first_name="ngModel" [(ngModel)] = "userService.user.first_name">
+                    </div>
+                    <div class="form-group">
+                      <label for="lastname">Last name</label>
+                      <input type="text" class="form-control" placeholder="Insert last name" name="lastname" #last_name="ngModel" [(ngModel)] = "userService.user.last_name">
+                    </div>
+                    <div>
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" placeholder="Insert username" name="username" #username="ngModel" [(ngModel)] = "userService.user.username">
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    <hr>
+                    <button type="button" class="btn btn-danger btn-block" (click)="CleanForm(user_form)">Clean form</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h3 class="h3 text-center">Users</h3>
+            <hr>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users">
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>@{{user.username}}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary" (click)="FetchUserData(user)">
+                                <img src="../../../assets/edit (1).svg">
+                            </button>
+                            <button class="btn btn-outline-light"></button>
+                            <button type="button" class="btn btn-danger" (click)="deleteUser(user)">
+                                <img src="../../../assets/trash-2 (1).svg">
+                            </button>
+                          </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

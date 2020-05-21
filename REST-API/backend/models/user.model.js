@@ -7,7 +7,7 @@ class UserModel
 
     async getUsers()
     {
-        const res = await pool.query('SELECT * FROM users');
+        const res = await pool.query('SELECT * FROM users ORDER BY id');
         return res;
     }
 
@@ -26,7 +26,7 @@ class UserModel
 
     async putUser(id,name,lastname,username)
     {
-        const res = await pool.query('SET users first_name = $1, last_name = $2, username=$3 WHERE id=$4',
+        const res = await pool.query('UPDATE users SET first_name = $1, last_name = $2, username=$3 WHERE id=$4',
         [name,lastname,username,id]);
         return res;
     }

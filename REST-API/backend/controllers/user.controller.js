@@ -20,16 +20,16 @@ class UserController
 
     postUser = async (req,res)=>
     {
-        const {name,lastname,username} = req.body;
-        const db_res= await model.postUser(name,lastname,username);//model res;
+        const {first_name,last_name,username} = req.body;
+        const db_res= await model.postUser(first_name,last_name,username);//model res;
         res.json(db_res.rows);
     } 
 
     putUser = async (req,res)=>
     {
         const id = req.params.id;
-        const {name,lastname,username} = req.body;
-        const db_res= await model.putUser(id,name,lastname,username);//model res;
+        const {first_name,last_name,username} = req.body;
+        const db_res= await model.putUser(id,first_name,last_name,username);//model res;
         res.json(db_res.rows);
     } 
 
